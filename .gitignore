@@ -1,0 +1,18 @@
+# Ignora la cartella node_modules
+node_modules/
+
+# Ignora i file di log
+*.log
+
+# Ignora i file di configurazione
+*.config.js
+
+# Ignora i file di build
+/build
+
+# Ignora i file di ambiente
+.env
+.env.local
+.env.*.local
+.env.test
+.env.production
