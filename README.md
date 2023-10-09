@@ -1,2 +1,3 @@
 # express-store
-Simple project using express done to learn it
+
+Simple project using express + vue
