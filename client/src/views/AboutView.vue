@@ -2,25 +2,18 @@
   <div class="about">
     <h1>About Us</h1>
     <p>
-      We are a team of passionate developers who love creating amazing web
-      applications.
+      We are a store that specializes in selling high-quality products at
+      affordable prices. Our mission is to provide our customers with the best
+      shopping experience possible.
     </p>
-    <h2>Our Mission</h2>
-    <p>
-      Our mission is to provide our clients with the best possible web
-      development solutions that meet their unique needs and requirements.
-    </p>
-    <h2>Our Services</h2>
+    <h2>Our Team</h2>
     <ul>
-      <li>Web Development</li>
-      <li>Mobile App Development</li>
-      <li>UI/UX Design</li>
-      <li>SEO Optimization</li>
+      <li>John Doe - CEO</li>
+      <li>Jane Smith - Marketing Manager</li>
+      <li>Bob Johnson - Sales Manager</li>
     </ul>
   </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style scoped>
 .about {
