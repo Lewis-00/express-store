@@ -1,0 +1,23 @@
+[
+  {
+    "productId": 0,
+    "imageUrl": "https://www.buydigital.it/1798-large_default/apple-watch-series-7-gps-45mm-midnight-aluminium-case-with-midnight-sport-band-regular-mkn53tya.jpg",
+    "price": "299",
+    "description": "Apple Watch is a wearable smartwatch that allows users to accomplish a variety of tasks, including making phone calls, sending text messages and reading email",
+    "title": "Apple Watch"
+  },
+  {
+    "productId": 1,
+    "imageUrl": "https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
+    "price": "12",
+    "description": "A good book description is a detailed, descriptivA good book description is a detailed, descriptive copy that is good A good book description is a detailed, descriptive copy that is good e copy that is good for public display, used for your book marketing, book discovery, and for sales purposes",
+    "title": "Book"
+  },
+  {
+    "productId": 2,
+    "imageUrl": "",
+    "price": "",
+    "description": "",
+    "title": ""
+  }
+]

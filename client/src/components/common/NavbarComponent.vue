@@ -3,7 +3,7 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
     <div class="container-fluid">
       <RouterLink class="navbar-brand" to="/">Vue-Express-Store</RouterLink>
       <button
