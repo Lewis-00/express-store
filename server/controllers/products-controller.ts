@@ -1,13 +1,10 @@
 import { Request, Response, Router } from "express";
-import fs from "fs/promises";
-import path from "path";
-
-const productsPath = path.join(__dirname, "..", "data", "products.json");
+import { ProductsModel } from "../models/products-model";
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
-    const products = await fs.readFile(productsPath, "utf8");
-    res.json(JSON.parse(products));
+    const products = await ProductsModel.getAllProducts();
+    return res.status(200).json(products);
   } catch (err) {
     console.log(err);
   }
