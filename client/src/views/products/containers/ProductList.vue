@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useFetch } from "../../utils/useFetch";
-import { EHttpMethods } from "../../utils/types";
-import type { IProduct } from "./products.types";
+import { useFetch } from "../../../utils/useFetch";
+import { EHttpMethods } from "../../../utils/types";
+import type { IProduct } from "./../products.types";
 import { ref, onMounted } from "vue";
-import { APP_API_URL } from "@/utils/constants";
+import { APP_API_URL } from "../../../utils/constants";
 
 const products = ref<IProduct[]>([]);
 
@@ -38,5 +38,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style></style>
