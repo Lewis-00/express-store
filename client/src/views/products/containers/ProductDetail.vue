@@ -54,7 +54,7 @@ onMounted(async () => {
         </span>
         <div class="mt-2">
           <RouterLink to="/product/list" class="btn btn-dark px-5">
-            Detail
+            Go back to list
           </RouterLink>
         </div>
       </div>
