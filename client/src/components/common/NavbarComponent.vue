@@ -22,7 +22,7 @@ import { RouterLink } from "vue-router";
           <RouterLink class="nav-link active" aria-current="page" to="/"
             >Home</RouterLink
           >
-          <RouterLink class="nav-link" to="/products">Products</RouterLink>
+          <RouterLink class="nav-link" to="/product/list">Products</RouterLink>
           <RouterLink class="nav-link" :to="{ name: 'About' }"
             >About</RouterLink
           >
