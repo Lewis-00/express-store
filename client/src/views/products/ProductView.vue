@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import ProductList from "./containers/ProductList.vue";
-import { ref } from "vue";
-import {
-  useRoute,
-  type RouteLocationNormalizedLoaded,
-  type RouteParams,
-} from "vue-router";
+import ProductDetail from "./containers/ProductDetail.vue";
+import { ref, watch } from "vue";
+import { useRoute, type RouteLocationNormalizedLoaded } from "vue-router";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
-const params: RouteParams = route.params;
+const idParams = ref(route.params.id);
 
-const idParams = ref(params.id);
+watch(
+  () => route.params.id as string,
+  (id: string) => {
+    idParams.value = id;
+  }
+);
 </script>
 
 <template>
-  <ProductList />
+  <div v-if="idParams === 'list'">
+    <ProductList />
+  </div>
+  <div v-else>
+    <ProductDetail :productId="(idParams as string)" />
+  </div>
 </template>

@@ -4,10 +4,14 @@ interface IProductsRouter extends Router {
   getProducts?: (req: Request, res: Response) => void;
 }
 
-import { getProducts } from "../controllers/products-controller";
+import {
+  getProducts,
+  getProductById,
+} from "../controllers/products-controller";
 
 const router: IProductsRouter = express.Router();
 
 router.get("/products", getProducts);
+router.get("/product/:id", getProductById);
 
 export default router;
