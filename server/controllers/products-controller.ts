@@ -14,9 +14,27 @@ export const getProductById = async (req: Request, res: Response) => {
   const productId = req.params.id;
   try {
     const [product]: any = await ProductsModel.getProductById(productId);
-    console.log(product);
     if (!product) return res.status(404).json({ message: "Product not found" });
     return res.status(200).json({ product });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const addProduct = async (req: Request, res: Response) => {
+  const { product_name, description, price, imageUrl } = req.body;
+  try {
+    const newProduct = new ProductsModel(
+      product_name,
+      description,
+      price,
+      imageUrl
+    );
+    await newProduct.addProduct();
+    return res
+      .status(200)
+      .json({ message: "Product added" })
+      .redirect("/products");
   } catch (err) {
     console.log(err);
   }

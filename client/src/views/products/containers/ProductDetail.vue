@@ -37,25 +37,26 @@ onMounted(async () => {
 <template>
   <div class="text-center" v-if="isProductLoading">Loading...</div>
   <div v-else-if="specificProduct">
-    <div class="mx-auto card text-center" style="width: 25rem">
-      <img
-        :src="specificProduct.imageUrl"
-        class="card-img-top"
-        :alt="specificProduct.product_name"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h4 class="card-text">
-          {{ specificProduct.product_name }} - {{ specificProduct.price }}$
-        </h4>
-        <span class="card-text">
-          <b>Description</b>:
-          {{ specificProduct.description }}
-        </span>
-        <div class="mt-2">
-          <RouterLink to="/product/list" class="btn btn-dark px-5">
-            Go back to list
-          </RouterLink>
+    <div class="container d-flex justify-content-center">
+      <div class="text-center" style="width: 30rem">
+        <div class="grid__item">
+          <div class="">
+            <img
+              class="card__img"
+              :src="specificProduct.imageUrl"
+              :alt="specificProduct.product_name"
+            />
+            <div class="card__content">
+              <h1 class="card__header">{{ specificProduct.product_name }}</h1>
+              <p class="card__text">
+                {{ specificProduct.description }}
+              </p>
+              <p class="card__text">{{ specificProduct.price }}$</p>
+              <RouterLink to="/product/list" class="card__btn"
+                >Go back to list <span>&rarr;</span></RouterLink
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,3 +76,7 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+
+<style>
+@import url("../products.css");
+</style>
