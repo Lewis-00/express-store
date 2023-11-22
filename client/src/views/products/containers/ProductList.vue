@@ -25,29 +25,41 @@ const redirectToDetail = (productId: number) => {
 </script>
 
 <template>
-  <div class="container mx-auto mt-4">
-    <div class="row">
-      <div v-for="product in products" :key="product.id" class="col-md-4">
+  <div class="mx-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Product list</h2>
+      <RouterLink to="/product-add" class="btn btn-dark">
+        Add product
+      </RouterLink>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col-12">
+      <div class="row">
         <div
-          v-if="product.product_name"
-          class="card text-center"
-          style="width: 18rem"
+          v-for="product in products"
+          :key="product.id"
+          class="grid__item col-xl-4 col-md-6 col-xs-12"
         >
-          <img
-            :src="product.imageUrl"
-            class="card-img-top"
-            :alt="product.product_name"
-          />
-          <div class="card-body">
-            <p class="card-text">
-              {{ product.product_name }} - {{ product.price }}$
-            </p>
-            <RouterLink :to="`/product/${product.id}`" class="btn btn-dark">
-              Detail
-            </RouterLink>
+          <div class="card text-center">
+            <img
+              class="card__img"
+              :src="product.imageUrl"
+              :alt="product.product_name"
+            />
+            <div class="card__content">
+              <h1 class="card__header">{{ product.product_name }}</h1>
+              <RouterLink :to="`/product/${product.id}`" class="card__btn">
+                Product detail <span>&rarr;</span>
+              </RouterLink>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+@import url("../products.css");
+</style>
