@@ -7,6 +7,7 @@ export const getProducts = async (req: Request, res: Response) => {
     return res.status(200).json(products);
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -18,6 +19,7 @@ export const getProductById = async (req: Request, res: Response) => {
     return res.status(200).json({ product });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Server error" });
   }
 };
 

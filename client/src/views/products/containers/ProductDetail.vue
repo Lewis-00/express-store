@@ -14,6 +14,8 @@ const props = defineProps({
 
 const specificProduct = ref<IProduct | null>(null);
 const isProductLoading = ref<boolean>(false);
+const showErrorMessage = ref<boolean>(false);
+const requestError = ref<string | null>(null);
 
 onMounted(async () => {
   isProductLoading.value = true;
@@ -24,8 +26,11 @@ onMounted(async () => {
         method: EHttpMethods.GET,
       }
     );
-    if (response.product) {
-      specificProduct.value = response.product;
+    if (response.error) {
+      requestError.value = response.error;
+      showErrorMessage.value = true;
+    } else if (response.data?.product) {
+      specificProduct.value = response.data.product;
     }
   } catch (error) {
     console.log(error);
@@ -36,6 +41,19 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-center" v-if="isProductLoading">Loading...</div>
+  <div v-else-if="requestError">
+    <div class="d-flex flex-column align-items-center">
+      <p class="fs-3">
+        <span class="text-danger">Ops!</span> Something went wrong.
+      </p>
+      <div class="d-flex gap-3">
+        <RouterLink to="/" class="btn btn-dark">Go back to Home</RouterLink>
+        <RouterLink to="/product/list" class="btn btn-dark"
+          >Go back to List</RouterLink
+        >
+      </div>
+    </div>
+  </div>
   <div v-else-if="specificProduct">
     <div class="container d-flex justify-content-center">
       <div class="text-center" style="width: 30rem">
@@ -74,6 +92,22 @@ onMounted(async () => {
         >
       </div>
     </div>
+  </div>
+  <div
+    v-if="showErrorMessage"
+    class="alert alert-danger alert-message"
+    role="alert"
+  >
+    <span class="d-flex align-items-center gap-2">
+      {{ requestError }}
+
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        @click="showErrorMessage = false"
+      ></button>
+    </span>
   </div>
 </template>
 

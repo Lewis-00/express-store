@@ -60,3 +60,9 @@
 .card__btn:active span {
   margin-left: 1.5rem;
 }
+
+.alert-message {
+  width: 20rem;
+  position: absolute;
+  bottom: 0;
+}

@@ -11,6 +11,15 @@ const handleSubmit = (event: any) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData.entries());
+
+  // Verification and replacement of comma with period in "price"
+  if (
+    data.price &&
+    typeof data.price === "string" &&
+    data.price.includes(",")
+  ) {
+    data.price = data.price.replace(",", ".");
+  }
   try {
     isAddProductLoading.value = true;
     const response = useFetch<string>(`${APP_API_URL}${ADD_PRODUCT_URL}`, {

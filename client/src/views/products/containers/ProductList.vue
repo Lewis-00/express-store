@@ -4,24 +4,23 @@ import { EHttpMethods } from "../../../utils/types";
 import type { IProduct } from "./../products.types";
 import { ref, onMounted } from "vue";
 import { APP_API_URL } from "../../../utils/constants";
-import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
 
-const router = useRouter();
 const products = ref<IProduct[]>([]);
+const requestError = ref<string | null>(null);
+const showErrorMessage = ref<boolean>(false);
 
 onMounted(async () => {
   const response = await useFetch<IProduct[]>(`${APP_API_URL}/products`, {
     method: EHttpMethods.GET,
   });
-  if (response) {
-    products.value = response;
+  if (response.data) {
+    products.value = response.data;
+  } else if (response.error) {
+    requestError.value = response.error;
+    showErrorMessage.value = true;
   }
 });
-
-const redirectToDetail = (productId: number) => {
-  router.push(`/product/${productId}`);
-};
 </script>
 
 <template>
@@ -33,7 +32,7 @@ const redirectToDetail = (productId: number) => {
       </RouterLink>
     </div>
   </div>
-  <div class="container">
+  <div v-if="products.length" class="container">
     <div class="col-12">
       <div class="row">
         <div
@@ -57,6 +56,33 @@ const redirectToDetail = (productId: number) => {
         </div>
       </div>
     </div>
+  </div>
+  <div v-else>
+    <div class="container">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center">No products found</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    v-if="showErrorMessage"
+    class="alert alert-danger alert-message"
+    role="alert"
+  >
+    <span class="d-flex align-items-center gap-2">
+      {{ requestError }}
+
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        @click="showErrorMessage = false"
+      ></button>
+    </span>
   </div>
 </template>
 

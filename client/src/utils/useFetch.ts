@@ -1,10 +1,15 @@
+type FetchResult<T> = {
+  data?: T;
+  error?: string;
+};
+
 export const useFetch = async <T>(
   url: string,
   options: {
     method: "GET" | "POST";
     data?: any;
   }
-): Promise<T> => {
+): Promise<FetchResult<T>> => {
   try {
     const response = await fetch(url, {
       method: options.method,
@@ -16,12 +21,13 @@ export const useFetch = async <T>(
     });
 
     if (!response.ok) {
-      throw new Error("Errore nella richiesta");
+      const { message } = await response.json();
+      return { error: `Error in the request: ${message}` };
     }
 
     const data: T = await response.json();
-    return data;
+    return { data };
   } catch (error) {
-    throw error;
+    return { error: "Error during the request" };
   }
 };
