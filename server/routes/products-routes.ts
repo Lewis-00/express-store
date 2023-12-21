@@ -8,6 +8,7 @@ import {
   getProducts,
   getProductById,
   addProduct,
+  removeProductById,
 } from "../controllers/products-controller";
 
 const router: IProductsRouter = express.Router();
@@ -15,5 +16,6 @@ const router: IProductsRouter = express.Router();
 router.get("/products", getProducts);
 router.post("/product-add", addProduct);
 router.get("/product/:id", getProductById);
+router.delete("/product/:id", removeProductById);
 
 export default router;

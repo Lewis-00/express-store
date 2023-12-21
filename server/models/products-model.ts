@@ -40,10 +40,17 @@ export class ProductsModel {
   }
 
   addProduct() {
-    console.log("THIS>>>", this);
     return db.execute(
       "INSERT INTO products (product_name, description, price, imageUrl) VALUES (?, ?, ?, ?)",
       [this.product_name, this.description, this.price, this.imageUrl]
     );
+  }
+
+  static async removeProductById(id: string) {
+    try {
+      return db.execute("DELETE FROM products WHERE id=?", [id]);
+    } catch (e) {
+      return e;
+    }
   }
 }
