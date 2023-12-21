@@ -6,7 +6,7 @@ type FetchResult<T> = {
 export const useFetch = async <T>(
   url: string,
   options: {
-    method: "GET" | "POST";
+    method: "GET" | "POST" | "DELETE";
     data?: any;
   }
 ): Promise<FetchResult<T>> => {

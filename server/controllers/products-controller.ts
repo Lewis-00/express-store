@@ -41,3 +41,13 @@ export const addProduct = async (req: Request, res: Response) => {
     console.log(err);
   }
 };
+
+export const removeProductById = async (req: Request, res: Response) => {
+  const productId = req.params.id;
+  try {
+    await ProductsModel.removeProductById(productId);
+    return res.status(200).json({ message: "Product removed" });
+  } catch (err) {
+    return res.status(500).json({ message: `${err}` });
+  }
+};
